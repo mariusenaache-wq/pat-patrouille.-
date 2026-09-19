@@ -1,193 +1,267 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pat Patrouille - Exposé</title>
+  <style>
+    :root {
+      --bleu-fonce: #17213b;
+      --blanc: #ffffff;
+      --rose: #ff4d6d;
+      --jaune: #ffd166;
+      --vert: #22c55e;
+      --orange: #f59e0b;
+      --violet: #8b5cf6;
+      --bleu: #3b82f6;
+      --rouge: #ef4444;
+      --beige: #fff3a3;
+      --rose-pale: #ffd6f6;
+      --gris: #f3f4f6;
+    }
 
-<title>Pat Patrouille - Exposé</title>
+    * { box-sizing: border-box; }
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ff4d6d, #ffd166, #06d6a0, #118ab2, #9b5de5);
-    background-size: 400% 400%;
-    animation: fond 10s infinite alternate;
-    color: #17213b;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--bleu-fonce);
+      background: linear-gradient(135deg, #ff4d6d, #ffd166, #06d6a0, #118ab2, #9b5de5);
+      background-size: 400% 400%;
+      animation: fond 12s ease infinite;
+    }
 
-@keyframes fond {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
+    @keyframes fond {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-header {
-    text-align: center;
-    color: white;
-    padding: 40px 15px;
-    text-shadow: 2px 2px 5px #333;
-}
+    header {
+      text-align: center;
+      color: white;
+      padding: 45px 20px 20px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.35);
+    }
 
-h1 {
-    font-size: 55px;
-    margin: 0;
-}
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+    }
 
-main {
-    max-width: 1000px;
-    margin: auto;
-    padding: 15px;
-}
+    header p {
+      margin-top: 10px;
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      font-weight: bold;
+    }
 
-.card {
-    background: rgba(255,255,255,0.95);
-    border-radius: 25px;
-    padding: 25px;
-    margin: 20px 0;
-    box-shadow: 0 10px 25px #0004;
-}
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 15px 40px;
+    }
 
-h2 {
-    font-size: 32px;
-}
+    .card {
+      background: rgba(255,255,255,0.95);
+      border-radius: 24px;
+      padding: 28px 24px;
+      margin: 22px 0;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    }
 
-.personnages {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
+    h2 {
+      margin-top: 0;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+    }
 
-.personnage {
-    border: none;
-    padding: 15px 20px;
-    border-radius: 30px;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
+    .intro {
+      font-size: 1.1rem;
+      margin-bottom: 18px;
+    }
 
-.personnage:hover {
-    transform: scale(1.08);
-}
+    .personnages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 16px;
+    }
 
-.chase { background: #ff4d6d; }
-.marcus { background: #3b82f6; }
-.stella { background: #f59e0b; }
-.rocky { background: #22c55e; }
-.ruben { background: #ef4444; }
-.everest { background: #8b5cf6; }
+    .personnage {
+      border: none;
+      padding: 16px 20px;
+      border-radius: 999px;
+      color: white;
+      font-size: 1.05rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      min-width: 150px;
+    }
 
-#fiche {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 20px;
-    background: linear-gradient(90deg, #fff3a3, #ffd6f6);
-    font-size: 19px;
-    font-weight: bold;
-    display: none;
-}
+    .personnage:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 22px rgba(0,0,0,0.2);
+    }
 
-footer {
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    padding: 30px;
-}
-</style>
+    .chase { background: var(--rose); }
+    .marcus { background: var(--bleu); }
+    .stella { background: var(--orange); }
+    .rocky { background: var(--vert); }
+    .ruben { background: var(--rouge); }
+    .everest { background: var(--violet); }
+
+    #fiche {
+      display: none;
+      margin-top: 22px;
+      padding: 22px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, var(--beige), var(--rose-pale));
+      border: 2px solid rgba(23, 33, 59, 0.1);
+      font-size: 1.08rem;
+      font-weight: bold;
+    }
+
+    #fiche h3 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+    }
+
+    .missions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .mission {
+      background: #f8fafc;
+      border: 2px solid rgba(23, 33, 59, 0.08);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .mission strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.15rem;
+    }
+
+    footer {
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      padding: 30px 15px 40px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 20px 16px;
+      }
+
+      .personnage {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<header>
+  <header>
     <h1>🐾 PAT PATROUILLE 🐾</h1>
     <p>🌈 Mon exposé sur les héros à quatre pattes ! 🌈</p>
-</header>
+  </header>
 
-<main>
+  <main>
+    <section class="card">
+      <h2>🚨 Bienvenue !</h2>
+      <p class="intro">
+        Bienvenue sur mon site dédié à la Pat Patrouille ! Ici, tu peux découvrir
+        les différents personnages, leurs missions et les qualités qui font de cette équipe
+        un modèle de courage et de solidarité.
+      </p>
 
-<div class="card">
-    <h2>🚨 Bienvenue !</h2>
-
-    <p>
-        Bienvenue sur mon site consacré à la Pat Patrouille !
-        Découvre les personnages et leurs missions.
-    </p>
-
-    <div class="personnages">
-
-        <button class="personnage chase"
-        onclick="afficher('🐶 Chase','Chase est le chien policier de la Pat Patrouille. Il est courageux et aide à organiser les missions.')">
-        🐶 Chase
+      <div class="personnages">
+        <button class="personnage chase" data-nom="🐶 Chase" data-description="Chase est le chien policier de la Pat Patrouille. Il est courageux, sérieux et très bon pour organiser les missions avec calme.">
+          🐶 Chase
         </button>
 
-        <button class="personnage marcus"
-        onclick="afficher('🐾 Marcus','Marcus est le pompier de l’équipe. Il intervient avec son camion de pompier pour aider les autres.')">
-        🐾 Marcus
+        <button class="personnage marcus" data-nom="🐾 Marcus" data-description="Marcus est le pompier de l’équipe. Il aide les autres avec son camion de pompier et intervient très vite en cas d’urgence.">
+          🐾 Marcus
         </button>
 
-        <button class="personnage stella"
-        onclick="afficher('🚁 Stella','Stella pilote son hélicoptère et participe aux missions aériennes.')">
-        🚁 Stella
+        <button class="personnage stella" data-nom="🚁 Stella" data-description="Stella est la pilote de l’équipe. Elle surveille le ciel, aide à la recherche et guide les missions aériennes.">
+          🚁 Stella
         </button>
 
-        <button class="personnage rocky"
-        onclick="afficher('♻️ Rocky','Rocky est le spécialiste du recyclage et de la réparation. Il trouve toujours des solutions.')">
-        ♻️ Rocky
+        <button class="personnage rocky" data-nom="♻️ Rocky" data-description="Rocky est le spécialiste du recyclage et de la réparation. Il trouve toujours une solution et aide à remettre les objets en état.">
+          ♻️ Rocky
         </button>
 
-        <button class="personnage ruben"
-        onclick="afficher('🚒 Ruben','Ruben est le spécialiste des constructions et utilise ses outils pour les missions.')">
-        🚒 Ruben
+        <button class="personnage ruben" data-nom="🚒 Ruben" data-description="Ruben est un expert en construction. Il sait utiliser ses outils pour créer, réparer et aider pendant les missions.">
+          🚒 Ruben
         </button>
 
-        <button class="personnage everest"
-        onclick="afficher('🏔️ Everest','Everest est spécialisée dans les missions en montagne et dans la neige.')">
-        🏔️ Everest
+        <button class="personnage everest" data-nom="🏔️ Everest" data-description="Everest est spécialisée dans les missions en montagne et dans la neige. Elle est courageuse et sait s’adapter aux situations difficiles.">
+          🏔️ Everest
         </button>
+      </div>
 
-    </div>
+      <div id="fiche">
+        <h3></h3>
+        <p></p>
+      </div>
+    </section>
 
-    <div id="fiche"></div>
-</div>
+    <section class="card">
+      <h2>⭐ À retenir</h2>
+      <p>
+        La Pat Patrouille montre l’importance du travail en équipe, de l’entraide,
+        du courage et des talents de chacun. Chaque personnage a un rôle utile,
+        et c’est grâce à leur solidarité qu’ils arrivent à aider les autres.
+      </p>
 
+      <div class="missions">
+        <div class="mission">
+          <strong>🤝 Travail d’équipe</strong>
+          Chaque chien a une mission différente, mais ils s’entraident pour réussir.
+        </div>
 
-<div class="card">
-    <h2>⭐ À retenir</h2>
+        <div class="mission">
+          <strong>💪 Courage</strong>
+          Les héros de la Pat Patrouille n’ont pas peur des difficultés.
+        </div>
 
-    <p>
-        La Pat Patrouille montre l’importance du travail en équipe,
-        de l’entraide, du courage et de l’utilisation des talents de chacun.
-    </p>
-</div>
+        <div class="mission">
+          <strong>🌟 Aide aux autres</strong>
+          Leur objectif principal est de protéger et de venir en aide à tout le monde.
+        </div>
+      </div>
+    </section>
+  </main>
 
-</main>
-
-<footer>
+  <footer>
     🐾 Exposé Pat Patrouille • 🌈 Site multicolore 🌈
-</footer>
+  </footer>
 
+  <script>
+    const boutons = document.querySelectorAll('.personnage');
+    const fiche = document.getElementById('fiche');
 
-<script>
+    boutons.forEach((bouton) => {
+      bouton.addEventListener('click', () => {
+        const nom = bouton.dataset.nom;
+        const description = bouton.dataset.description;
 
-function afficher(nom, description) {
+        fiche.style.display = 'block';
+        fiche.querySelector('h3').textContent = nom;
+        fiche.querySelector('p').textContent = description;
 
-    let fiche = document.getElementById("fiche");
-
-    fiche.style.display = "block";
-
-    fiche.innerHTML =
-        "<h2>" + nom + "</h2>" +
-        "<p>" + description + "</p>";
-
-    fiche.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
+        fiche.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
     });
-}
-
-</script>
-
+  </script>
 </body>
 </html>
