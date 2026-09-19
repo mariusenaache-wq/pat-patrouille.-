@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pat Patrouille - Exposé</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #17213b;
+  background: linear-gradient(135deg, #ff5f6d, #ffc371, #42e695, #38f9d7, #7f7fd5);
+  background-size: 400% 400%;
+  animation: fond 12s ease infinite;
+}
+
+@keyframes fond {
+  0%, 100% { background-position: 0 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+header {
+  text-align: center;
+  color: white;
+  padding: 35px 15px;
+  text-shadow: 2px 3px 5px #333;
+}
+
+h1 {
+  font-size: clamp(38px, 10vw, 68px);
+  margin: 0 0 10px;
+}
+
+header p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+main {
+  max-width: 950px;
+  margin: auto;
+  padding: 15px;
+}
+
+.card {
+  background: rgba(255,255,255,0.96);
+  border-radius: 28px;
+  padding: 25px;
+  margin: 20px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.hero {
+  text-align: center;
+}
+
+.logo {
+  font-size: 100px;
+  margin: 15px;
+}
+
+.personnages {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+button {
+  border: 0;
+  border-radius: 20px;
+  padding: 18px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 12px #0003;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.04);
+}
+
+.chase { background: #2563eb; }
+.marcus { background: #ef4444; }
+.stella { background: #ec4899; }
+.rocky { background: #22c55e; }
+.ruben { background: #f59e0b; }
+.everest { background: #8b5cf6; }
+
+#fiche {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  background: linear-gradient(90deg, #fff3a3, #ffd6f6);
+}
+
+#fiche .emoji {
+  font-size: 55px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.gallery div {
+  height: 120px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 55px;
+}
+
+.g1 { background: #ffd166; }
+.g2 { background: #06d6a0; }
+.g3 { background: #ef476f; }
+.g4 { background: #118ab2; }
+.g5 { background: #9b5de5; }
+.g6 { background: #f15bb5; }
+
+footer {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  padding: 25px;
+}
+
+@media (max-width: 600px) {
+  .personnages {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🐾 PAT PATROUILLE 🐾</h1>
+  <p>🌈 Mon exposé sur les héros à quatre pattes ! 🌈</p>
+</header>
+
+<main>
+
+<section class="card hero">
+
+  <h2>🚨 Bienvenue !</h2>
+
+  <div class="logo">🐾🚓🚒🚁</div>
+
+  <p>
+    Bienvenue sur mon exposé consacré à la Pat Patrouille !
+    Découvre les personnages et leurs missions.
+  </p>
+
+  <div class="personnages">
+
+    <button class="chase"
+      onclick="afficher('🐶','Chase','Chase est le chien policier de la Pat Patrouille. Il aide à organiser les missions.')">
+      🐶 Chase
+    </button>
+
+    <button class="marcus"
+      onclick="afficher('🚒','Marcus','Marcus est le pompier de l’équipe. Il intervient avec son camion de pompier.')">
+      🚒 Marcus
+    </button>
+
+    <button class="stella"
+      onclick="afficher('🚁','Stella','Stella pilote son hélicoptère et participe aux missions aériennes.')">
+      🚁 Stella
+    </button>
+
+    <button class="rocky"
+      onclick="afficher('♻️','Rocky','Rocky est le spécialiste du recyclage et de la réparation.')">
+      ♻️ Rocky
+    </button>
+
+    <button class="ruben"
+      onclick="afficher('🔧','Ruben','Ruben est le spécialiste des constructions et de ses outils.')">
+      🔧 Ruben
+    </button>
+
+    <button class="everest"
+      onclick="afficher('🏔️','Everest','Everest est spécialisée dans les missions en montagne et dans la neige.')">
+      🏔️ Everest
+    </button>
+
+  </div>
+
+  <div id="fiche">
+    <div id="emoji" class="emoji"></div>
+    <h2 id="nom"></h2>
+    <p id="description"></p>
+  </div>
+
+</section>
+
+<section class="card">
+  <h2>⭐ À retenir</h2>
+
+  <p>
+    La Pat Patrouille met en avant le travail en équipe,
+    l’entraide, le courage et les talents de chacun.
+  </p>
+</section>
+
+<section class="card">
+
+  <h2>🌈 Galerie</h2>
+
+  <div class="gallery">
+    <div class="g1">🐶</div>
+    <div class="g2">🚓</div>
+    <div class="g3">🚒</div>
+    <div class="g4">🚁</div>
+    <div class="g5">🛠️</div>
+    <div class="g6">🐾</div>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  🐾 Exposé Pat Patrouille • 🌈 Site multicolore 🌈
+</footer>
+
+<script>
+
+function afficher(emoji, nom, description) {
+
+  document.getElementById("emoji").textContent = emoji;
+
+  document.getElementById("nom").textContent = nom;
+
+  document.getElementById("description").textContent = description;
+
+  document.getElementById("fiche").style.display = "block";
+
+  document.getElementById("fiche").scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+
+}
+
+</script>
+
+</body>
+</html>
